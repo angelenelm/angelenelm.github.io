@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+    shell = require('gulp-shell'),
     sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     cleancss = require('gulp-clean-css'),
@@ -8,7 +9,19 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     watch = require('gulp-watch');
 
+/* build jekyll site */
+gulp.task('build',
+  shell.task(['bundle exec jekyll serve'])
+)
 
+/* serve site with browsersync */
+gulp.task('serve', function () {
+  browserSync.init({
+    server: {
+      baseDir: '_site'
+    }
+  })
+})
 
 gulp.task('sass', () => {
   return gulp
@@ -32,4 +45,4 @@ gulp.task('watch', () => {
   gulp.watch('sass/**/*.scss', gulp.series(['sass', reload]));
 })
 
-gulp.task('default', gulp.series('serve', 'sass', 'watch'));
+gulp.task('default', gulp.series('build', 'sass', 'watch'));
