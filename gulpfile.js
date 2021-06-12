@@ -6,27 +6,9 @@ var gulp = require('gulp'),
     reload = browserSync.reload(),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
-    watch = require('gulp-watch'),
-    cp = require('child_process'),
-    jekyll = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll';
+    watch = require('gulp-watch');
 
-/* run 'jekyll build' */
-gulp.task('jekyll-build', done => {
-    return cp.spawn(jekyll, ['build'], { stdio: 'inherit' }).on('close', done);
-})
 
-/* rebuild jekyll then reload the page */
-gulp.task('jekyll-rebuild', gulp.series(['jekyll-build', reload]))
-
-/* wait for jekyll-build, then launch server */
-gulp.task('serve', gulp.series('jekyll-build'), () => {
-  browserSync({
-    server: {
-      baseDir: '_site'
-    },
-    host: 'localhost'
-  })
-})
 
 gulp.task('sass', () => {
   return gulp
@@ -47,7 +29,6 @@ gulp.task('sass', () => {
 })
 
 gulp.task('watch', () => {
-  gulp.watch('scss/*.scss', gulp.series(['sass', reload]));
   gulp.watch('sass/**/*.scss', gulp.series(['sass', reload]));
 })
 
