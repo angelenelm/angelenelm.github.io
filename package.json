@@ -4,7 +4,9 @@
   "description": "Designer & developer of intuitive & beautiful internet experiences",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp build",
+    "start": "gulp serve --watch"
   },
   "repository": {
     "type": "git",

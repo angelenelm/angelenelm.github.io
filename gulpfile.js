@@ -1,48 +1,72 @@
 var gulp = require('gulp'),
-    shell = require('gulp-shell'),
     sass = require('gulp-sass'),
-    autoprefixer = require('gulp-autoprefixer'),
+    prefix = require('gulp-autoprefixer'),
     cleancss = require('gulp-clean-css'),
     browserSync = require('browser-sync').create(),
-    reload = browserSync.reload(),
-    concat = require('gulp-concat'),
-    uglify = require('gulp-uglify'),
-    watch = require('gulp-watch');
+    cp = require('child_process'),
 
-/* build jekyll site */
-gulp.task('build',
-  shell.task(['bundle exec jekyll serve'])
-)
+    jekyll = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll';
 
-/* serve site with browsersync */
-gulp.task('serve', function () {
-  browserSync.init({
-    server: {
-      baseDir: '_site'
-    }
-  })
-})
+var scssPath = '_scss/**/*.scss';
+var scssMainPath = '_scss/*.scss';
+var templatePath = [
+  '*.html',
+  '_includes/*.html',
+  '_layouts/*.html',
+  '*.yml',
+  '*.js'
+];
 
 gulp.task('sass', () => {
   return gulp
-    .src('sass/**/*.scss')
-
-    .on('error', sass.logError)
-
-    .pipe(autoprefixer({
-      browsers: ['last 2 versions'],
-      cascade: false,
-    }))
-
-    .pipe(sass({
-      outputStyle: 'compressed'
-    }))
-
-    .pipe(gulp.dest('css'))
+  .src(scssMainPath)
+  .pipe(sass({
+    includePaths: ['scss'],
+    outputStyle: 'expanded',
+  }))
+  .pipe(prefix({
+    overrideBrowserslist: ['last 2 versions'],
+    cascade: false,
+  }))
+  .pipe(cleancss({compatibility: 'ie8'}))
+  .pipe(gulp.dest('_site/css'))
+  .pipe(gulp.dest('css'))
 })
 
-gulp.task('watch', () => {
-  gulp.watch('sass/**/*.scss', gulp.series(['sass', reload]));
+// browserSync tasks
+var reloadBrowser = done => {
+  browserSync.reload();
+  done();
+}
+
+// run `jekyll build`
+gulp.task('jekyll-build', done => {
+  return cp
+  .spawn(jekyll, ['build'], {stdio: 'inherit'}).on('close', done)
 })
 
-gulp.task('default', gulp.series('build', 'sass', 'watch'));
+// run `jekyll build` with _config_dev.yml
+gulp.task('jekyll-dev', done => {
+  return cp
+  .spawn(jekyll, ['build', '--config', '_config.yml,_config_dev.yml'], {
+    stdio: 'inherit',
+  })
+  .on('close', done)
+})
+
+// rebuild jekyll then page reload
+gulp.task('jekyll-rebuild', gulp.series(['jekyll-dev', reloadBrowser]))
+
+gulp.task('serve', gulp.series('jekyll-dev', () => {
+    browserSync.init({
+      server: {
+        baseDir: '_site',
+      }
+    })
+
+    gulp.watch(scssPath, gulp.series(['sass', reloadBrowser]))
+    gulp.watch(templatePath, gulp.task('jekyll-rebuild'))
+  }
+))
+
+gulp.task('build', gulp.series(['sass', 'jekyll-build']))

@@ -21,7 +21,7 @@ src: local('Whitney Medium'), url('../fonts/whitney/whitneymedium.woff') format(
 @font-face {
 font-family: 'Whitney';
 font-style: 500;
-font-weight: normal;
+font-weight: italic;
 src: local('Whitney Medium Italic'),
 url('../fonts/whitney/whitneymediumitalic.woff') format('woff');
 }
@@ -61,7 +61,7 @@ url('../fonts/whitney/whitneylight.woff') format('woff');
 @font-face {
 font-family: 'Whitney Semibold Italic';
 font-style: 600;
-font-weight: normal;
+font-weight: italic;
 src: local('Whitney Semibold Italic'),
 url('../fonts/whitney/WhitneySemiboldItalic.woff') format('woff');
 }
@@ -69,7 +69,7 @@ url('../fonts/whitney/WhitneySemiboldItalic.woff') format('woff');
 @font-face {
 font-family: 'Whitney';
 font-style: 400;
-font-weight: normal;
+font-weight: italic;
 src: local('Whitney Book Italic'),
 url('../fonts/whitney/whitneybookitalic.woff') format('woff');
 }
@@ -77,7 +77,7 @@ url('../fonts/whitney/whitneybookitalic.woff') format('woff');
 @font-face {
 font-family: 'Whitney';
 font-style: 300;
-font-weight: normal;
+font-weight: italic;
 src: local('Whitney Light Italic'),
 url('../fonts/whitney/whitneylightitalic.woff') format('woff');
 }
