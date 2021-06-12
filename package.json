@@ -1,0 +1,31 @@
+{
+  "name": "angelenemanalo.com",
+  "version": "0.0.0",
+  "description": "Designer & developer of intuitive & beautiful internet experiences",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angelenelm/angelenelm.github.io.git"
+  },
+  "author": "Angelene Manalo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/angelenelm/angelenelm.github.io/issues"
+  },
+  "homepage": "https://github.com/angelenelm/angelenelm.github.io#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.14",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sass": "^4.1.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-uncss": "^1.0.6",
+    "gulp-watch": "^5.0.1"
+  }
+}
