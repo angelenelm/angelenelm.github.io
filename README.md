@@ -5,4 +5,4 @@ First iteration of my portfolio website, [angelenemanalo.com](https://angelenema
 - [gulp](https://gulpjs.com/)
 
 ## credits
-`gulpfile.js` setup from [Brittany Chiang](https://github.com/bchiang7/bchiang7.github.io)
+`gulpfile.js` setup from [Brittany Chiang](https://github.com/bchiang7/bchiang7.github.io) 🙏

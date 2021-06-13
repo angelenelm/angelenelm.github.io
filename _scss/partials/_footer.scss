@@ -1,0 +1,13 @@
+.footer {
+  padding: 0 12em;
+  display: flex;
+  max-width: 1440px;
+  flex-direction: column;
+  margin: 0 auto;
+
+  &__copyright {
+    .emoji {
+      margin: 0 0.25em;
+    }
+  }
+}

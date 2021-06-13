@@ -24,6 +24,7 @@ email: angelenelm@gmail.com
 description: Designer & developer of intuitive & beautiful internet experiences
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://angelenelm.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+resume: "https://angelenelm.github.io/angelenemanaloresume.pdf"
 social:
   - title: email
     url: mailto:angelenelm@gmail.com

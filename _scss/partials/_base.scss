@@ -7,12 +7,29 @@ html {
 }
 
 ::selection {
-  background: $mint;
+  background: $yellow;
 }
 
 html, body {
-  background-color: $white;
+  margin: 0;
+  padding: 0;
+  background-color: $off-white;
+  color: $dark-gray;
   font-family: $Whitney;
-  line-height: 1.5;
   width: 100%;
+  height: 100%;
+}
+
+a {
+  @include transition;
+  text-decoration: none;
+  color: inherit;
+}
+
+.emoji {
+  display: inline-block;
+  vertical-align: text-bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }

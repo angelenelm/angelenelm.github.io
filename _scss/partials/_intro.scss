@@ -1,0 +1,42 @@
+.intro {
+  padding: 8em 12em;
+  display: flex;
+  max-width: 1440px;
+  flex-direction: column;
+  margin: 0 auto;
+
+  &__hello, &__tagline {
+    font-size: 2em;
+    font-weight: normal;
+  }
+
+  &__hello {
+    .name {
+      font-size: 1.25em;
+      font-family: Inconsolata, monospace;
+    }
+  }
+
+  &__links {
+    margin: 1em 0;
+    font-size: 1.25em;
+    .resume, .email {
+      border: 1px solid;
+      border-radius: 5px;
+      width: fit-content;
+      padding: 0.5em;
+
+      &:hover {
+        color: $dark-gray
+      }
+    }
+
+    .resume {
+      color: $green;
+    }
+
+    .email {
+      color: $blue;
+    }
+  }
+}

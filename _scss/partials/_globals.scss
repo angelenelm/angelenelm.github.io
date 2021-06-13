@@ -1,14 +1,28 @@
 // colors
 $white: #ffffff;
-$red: #ff9aa2;
-$orange: #ffdac1;
-$yellow: #f9efc7;
-$green: #e2f0cb;
+$red: #d4747a;
+$orange: #ea915e;
+$yellow: #fedb63;
+$green: #85B464;
 $mint: #b5ead7;
-$blue: #b8dfe6;
-$purple: #c5bbde;
+$blue: #5391ae;
+$purple: #986B9B;
+$off-white: #f2f1ee;
+$light-gray: #ddd9d3;
+$gray: #87837d;
+$dark-gray: #32302c;
+$black: #090807;
 
 // fonts
 $font-stack: 'Source Sans Pro', system, system-ui, -apple-system,
   BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
 $Whitney: 'Whitney', $font-stack;
+
+// media queries
+$mobile-width: 43em;
+$tablet-width: 62em;
+$desktop-width: 82em;
+
+@mixin transition {
+  transition: all 0.2s ease-in-out;
+}
